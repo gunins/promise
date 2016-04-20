@@ -1,3 +1,17 @@
+.btn {
+  display: inline-block;
+  border: 1px solid #716E6E;
+  padding: 4px 10px;
+  margin: 10px;
+  min-width: 100px;
+  font-size: 14px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px #333; }
+  .btn.red {
+    background: salmon; }
+  .btn.green {
+    background: lightgreen; }
+
 body {
   background: #f2f2f2; }
 

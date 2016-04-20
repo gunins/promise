@@ -82,8 +82,8 @@ module.exports = function (grunt) {
                 tasks: ['sass:dev']
             },
             html: {
-                files: ['pages/*.html'],
-                tasks: ['copy:htmldev', 'environment']
+                files: ['src/pages/*.html'],
+                tasks: ['copy:htmldev']
             },
             requirejs: {
                 files: ['src/js/**/*'],
