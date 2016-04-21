@@ -5,22 +5,18 @@ define(['app/translation'], function (Translation) {
     var btnRed = document.getElementById('btn1');
     var btnGreen = document.getElementById('btn2');
 
-    var phrase = {
-        phrase8: 'RED',
-        phrase9: 'GREEN'
-    };
+    var data = {};
 
     Translation.then(function (data) {
         console.log('main.js data: ', data);
-        phrase.phrase8 = data.phrase8;
-        phrase.phrase9 = data.phrase9;
 
-        console.log('then phrase: ', phrase);
+        btnRed.textContent = data.phrase1;
+        btnGreen.textContent = data.phrase2;
     });
 
-    btnRed.innerHTML = phrase.phrase8;
-    btnGreen.innerHTML = phrase.phrase9;
+    btnRed.textContent = data.phrase1 || 'RED';
+    btnGreen.textContent = data.phrase2 || 'GREEN';
 
-    console.log('end phrase: ', phrase);
+    console.log('end phrase: ', data);
 
 });

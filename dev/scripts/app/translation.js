@@ -3,6 +3,7 @@ define(['utils/ajax'], function (ajax) {
     var jsonString;
     var local = {
         en: 'en-gb',
+        lv: 'lv-lv',
         de: 'de-de'
     };
 
@@ -10,7 +11,8 @@ define(['utils/ajax'], function (ajax) {
         jsonString = jsonString || ajax.get('../json/translations.json');
 
         return jsonString.then(function (data) {
-            return JSON.parse(data)[0][local.de];
+            console.log('returned json: ', JSON.parse(data)[0][local.lv]);
+            return JSON.parse(data)[0][local.lv];
         });
     }
 
