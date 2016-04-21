@@ -1,7 +1,7 @@
 #Experiments with Promise
 
 After download CD to same DIR where is Gruntfile.js
-Do ```npm install```
+Do `npm install`
 
 After NPM install all the modules you can use grunt watcher
 
