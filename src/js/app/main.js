@@ -1,22 +1,34 @@
-define(['app/translation'], function (Translation) {
+define(
+    [
+        'app/translationPromise',
+        'app/translationsRequire'
+    ], function (TranslationPromise,
+                 translationsRequire) {
 
-    console.log('Translation: ', Translation);
+        console.log('%c main.js loaded translationsRequire: ','color:yellow;', translationsRequire);
 
-    var btnRed = document.getElementById('btn1');
-    var btnGreen = document.getElementById('btn2');
+        var btnRedA = document.getElementById('btn1');
+        var btnGreenA = document.getElementById('btn2');
 
-    var data = {};
+        var btnRedB = document.getElementById('btn3');
+        var btnGreenB = document.getElementById('btn4');
 
-    Translation.then(function (data) {
-        console.log('main.js data: ', data);
+        /* Translations with Promises*/
+        var data = {};
+        TranslationPromise.then(function (data) {
+            console.log('main.js data: ', data);
 
-        btnRed.textContent = data.phrase1;
-        btnGreen.textContent = data.phrase2;
+            btnRedA.textContent = data.phrase1;
+            btnGreenA.textContent = data.phrase2;
+        });
+
+        btnRedA.textContent = data.phrase1 || 'RED';
+        btnGreenA.textContent = data.phrase2 || 'GREEN';
+        
+        /* Translations with RequireJS */
+        btnRedB.textContent = translationsRequire.phrase1 || 'RED';
+        btnGreenB.textContent = translationsRequire.phrase2 || 'GREEN';
+
+        console.log('end phrase: ', data);
+
     });
-
-    btnRed.textContent = data.phrase1 || 'RED';
-    btnGreen.textContent = data.phrase2 || 'GREEN';
-
-    console.log('end phrase: ', data);
-
-});
