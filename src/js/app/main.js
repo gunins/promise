@@ -7,9 +7,11 @@ define(
 
         console.log('%c main.js loaded translationsRequire: ','color:yellow;', translationsRequire);
 
+        //btns for test Promise
         var btnRedA = document.getElementById('btn1');
         var btnGreenA = document.getElementById('btn2');
 
+        //btns for test RequireJS
         var btnRedB = document.getElementById('btn3');
         var btnGreenB = document.getElementById('btn4');
 
