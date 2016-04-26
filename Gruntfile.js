@@ -73,8 +73,44 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            htmldev: {expand: true, cwd: 'src/pages/', src: ['*.html'], dest: path + '/'},
-            htmldist: {expand: true, cwd: 'src/pages/', src: ['*.html'], dest: path + '/'}
+            htmldev: {expand: true, cwd: 'src/pages/', src: ['*.html'], dest: path + '/'}
+            /*htmldist: {expand: true, cwd: 'src/pages/', src: ['*.html'], dest: path + '/'}*/
+        },
+        replace: {
+            dev: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'DataMain',
+                            replacement: 'data-main="scripts/setup" '
+                        },
+                        {
+                            match: 'Src',
+                            replacement: 'src="scripts/lib/require.js"'
+                        }
+                    ]
+                },
+                files: [
+                    {expand: true, flatten: true, src: ['src/pages/index.html'], dest: path + '/'}
+                ]
+            },
+            dist: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'DataMain',
+                            replacement: ''
+                        },
+                        {
+                            match: 'Src',
+                            replacement: 'src="scripts/app.min.js"'
+                        }
+                    ]
+                },
+                files: [
+                    {expand: true, flatten: true, src: ['src/pages/index.html'], dest: path +'/'}
+                ]
+            }
         },
         watch: {
             css: {
@@ -83,7 +119,7 @@ module.exports = function (grunt) {
             },
             html: {
                 files: ['src/pages/*.html'],
-                tasks: ['copy:htmldev']
+                tasks: ['replace:dev']
             },
             requirejs: {
                 files: ['src/js/**/*'],
@@ -97,11 +133,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-replace');
 
     grunt.registerTask('dev', [
         'clean:env',
         'sass:' + path,
-        'copy:htmldev',
+        'replace:dev',
         'requirejs:dev',
         'watch'
     ]);
@@ -109,9 +146,8 @@ module.exports = function (grunt) {
     grunt.registerTask('dist', [
         'clean:env',
         'sass:' + path,
-        'copy:htmldist',
+        'replace:dist',
         'requirejs:dist'
-        /*'compress:main'*/
     ]);
 };
 

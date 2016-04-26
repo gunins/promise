@@ -15,5 +15,15 @@ requirejs.config({
 
 // Start loading the main app file. Put all of
 // your application logic in there.
-requirejs(['main']);
+require(['modules/domReady'], function (domReady) {
+    domReady(function () {
+        console.log('dom ready');
+        //This function is called once the DOM is ready.
+        //It will be safe to query the DOM and manipulate
+        //DOM nodes in this function.
+        requirejs(['main']);
+    });
+});
+
+
 
