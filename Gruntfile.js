@@ -62,8 +62,8 @@ module.exports = function (grunt) {
 
                     out: "dist/scripts/app.min.js",
                     optimize: 'uglify2',
-                    preserveLicenseComments: true, /*Cannot use preserveLicenseComments and generateSourceMaps together. Either explcitly set preserveLicenseComments to false (default is true) or turn off generateSourceMaps. If you want source maps with license comments, see: http://requirejs.org/docs/errors.html#sourcemapcomments*/
-                    generateSourceMaps: false
+                    preserveLicenseComments: false, /*Cannot use preserveLicenseComments and generateSourceMaps together. Either explcitly set preserveLicenseComments to false (default is true) or turn off generateSourceMaps. If you want source maps with license comments, see: http://requirejs.org/docs/errors.html#sourcemapcomments*/
+                    generateSourceMaps: true
                 }
             }
         },

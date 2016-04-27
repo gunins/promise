@@ -1,5 +1,6 @@
 //dynamic path
-var path = document.getElementById('websitePath').value;
+//var path = document.getElementById('websitePath').value;
+var path = 'json';
 
 define(
     [

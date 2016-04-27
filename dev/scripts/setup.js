@@ -6,16 +6,18 @@
 
 requirejs.config({
     urlArgs: "bust=" + (new Date()).getTime(),
-    baseUrl: '/src/js/',
+    baseUrl: 'scripts',
     paths: {
         app: 'app',
         main: 'app/main'
     }
 });
 
+requirejs(['main']);
+
 // Start loading the main app file. Put all of
 // your application logic in there.
-require(['modules/domReady'], function (domReady) {
+/*require(['modules/domReady'], function (domReady) {
     domReady(function () {
         console.log('dom ready');
         //This function is called once the DOM is ready.
@@ -23,7 +25,7 @@ require(['modules/domReady'], function (domReady) {
         //DOM nodes in this function.
         requirejs(['main']);
     });
-});
+});*/
 
 
 
