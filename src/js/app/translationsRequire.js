@@ -8,7 +8,7 @@ define(
         'modules/local'
     ], function (translations,
                  local) {
-
-        return translations[local.lv];
+        var webLocal = document.getElementById('websiteLocal').value;
+        return translations[local[webLocal]];
     }
 );

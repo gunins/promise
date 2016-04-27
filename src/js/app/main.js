@@ -3,15 +3,12 @@ define(
         'app/translationPromise',
         'app/translationsRequire',
         'modules/domReady'
-        
+
     ], function (TranslationPromise,
                  translationsRequire,
                  domReady) {
 
         function showMagic() {
-
-
-            console.log('%c main.js loaded translationsRequire: ', 'color:yellow;', translationsRequire);
 
             //btns for test Promise
             var btnRedA = document.getElementById('btn1');
@@ -24,8 +21,6 @@ define(
             /* Translations with Promises*/
             var data = {};
             TranslationPromise.then(function (data) {
-                console.log('main.js data: ', data);
-
                 btnRedA.textContent = data.phrase1;
                 btnGreenA.textContent = data.phrase2;
             });
@@ -36,9 +31,6 @@ define(
             /* Translations with RequireJS */
             btnRedB.textContent = translationsRequire.phrase1 || 'RED';
             btnGreenB.textContent = translationsRequire.phrase2 || 'GREEN';
-
-            console.log('end phrase: ', data);
-
         }
 
         domReady(function () {
