@@ -4,9 +4,9 @@ define(
         'app/translationsRequire',
         'modules/domReady'
 
-    ], function (TranslationPromise,
-                 translationsRequire,
-                 domReady) {
+    ], function(TranslationPromise,
+                translationsRequire,
+                domReady) {
 
         function showMagic() {
 
@@ -20,7 +20,7 @@ define(
 
             /* Translations with Promises*/
             var data = {};
-            TranslationPromise.then(function (data) {
+            TranslationPromise.then(function(data) {
                 btnRedA.textContent = data.phrase1;
                 btnGreenA.textContent = data.phrase2;
             });
@@ -28,12 +28,14 @@ define(
             btnRedA.textContent = data.phrase1 || 'RED';
             btnGreenA.textContent = data.phrase2 || 'GREEN';
 
-            /* Translations with RequireJS */
-            btnRedB.textContent = translationsRequire.phrase1 || 'RED';
-            btnGreenB.textContent = translationsRequire.phrase2 || 'GREEN';
+            /* Translations with RequireJS kind of promise async */
+            translationsRequire(function(translation) {
+                btnRedB.textContent = translation.phrase1 || 'RED';
+                btnGreenB.textContent = translation.phrase2 || 'GREEN';
+            })
         }
 
-        domReady(function () {
+        domReady(function() {
             showMagic();
         });
 

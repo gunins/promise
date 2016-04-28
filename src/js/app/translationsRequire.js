@@ -1,28 +1,15 @@
-//dynamic path
-//var path = document.getElementById('websitePath').value;
-var path = '';
+define(['require','modules/local'], function(localRequire,local) {
+    return  function(resolve) {
+            var local = document.getElementById('websiteLocal').value;
+            var webLocal = document.getElementById('websiteLocal').value;
+            var locale = local[webLocal];
+            localRequire({
+                paths: {
+                    local: local
+                }
+            }, ['local/translationSimple'], function(translations) {
+                resolve(translations[locale]);
+            }) 
+        }
 
-console.log('1 path: ', path);
-require(['module'], function (module) {
-    path = document.getElementById('websitePath').value;
-    console.log('2 path: ', path);
-    module.config().path = path;
-});
-
-define(
-    [
-        '/' + path + '/translationSimple.js',
-        'modules/local'
-    ],
-
-    function (translations,
-              local) {
-
-        console.log('module path: ', path);
-        /*
-         * Get translations with RequireJS
-         * */
-        var webLocal = document.getElementById('websiteLocal').value;
-        return translations[local[webLocal]];
-    }
-);
+})
