@@ -4,6 +4,9 @@ define(
         'modules/local'
     ], function (ajax,
                  local) {
+        /*
+        * Get translations with Promise
+        * */
 
         var jsonString;
 
