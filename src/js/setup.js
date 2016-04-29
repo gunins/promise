@@ -4,12 +4,15 @@ requirejs.config({
     paths: {
         app: 'app',
         main: 'app/main'
-    },
-    'config': {
+    }, /*paths: {
+        app: 'app2',
+        main: 'app2/main'
+    },*/
+    /*'config': {
         'app/translationsRequire': {
             path: 'dynamicPath'
         }
-    }
+    }*/
 });
 
 requirejs(['main']);

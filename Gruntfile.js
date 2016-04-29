@@ -73,7 +73,12 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            htmldev: {expand: true, cwd: 'src/pages/', src: ['*.html'], dest: path + '/'}
+            htmldev: {
+                files:[
+                    {expand: true, cwd: 'src/pages/', src: ['*.html'], dest: path + '/'},
+                    {expand: true, cwd: './', src: ['json/**/*.js'], dest: 'dev/scripts/'}
+                ]
+            }
             /*htmldist: {expand: true, cwd: 'src/pages/', src: ['*.html'], dest: path + '/'}*/
         },
         replace: {
@@ -138,8 +143,9 @@ module.exports = function (grunt) {
     grunt.registerTask('dev', [
         'clean:env',
         'sass:' + path,
-        'replace:dev',
         'requirejs:dev',
+        'copy:htmldev',
+        'replace:dev',
         'watch'
     ]);
 
